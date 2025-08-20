@@ -9,7 +9,7 @@ export const App = () => {
   const visibleMovies = moviesFromServer.filter(
     movie =>
       movie.title.toLowerCase().includes(normalizedQuery) ||
-      movie.description.toLowerCase().includes(normalizedQuery),
+      (movie.description || '').toLowerCase().includes(normalizedQuery),
   );
 
   return (
@@ -35,7 +35,7 @@ export const App = () => {
           </div>
         </div>
 
-        <MoviesList movies={visibleMovies} query={query} />
+        <MoviesList movies={visibleMovies} />
       </div>
 
       <div className="sidebar">Sidebar goes here</div>
